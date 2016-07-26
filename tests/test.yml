@@ -1,0 +1,5 @@
+---
+- name: Install Mosquitto
+  hosts: all
+  roles:
+  - ansible-mosquitto

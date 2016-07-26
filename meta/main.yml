@@ -1,0 +1,23 @@
+---
+galaxy_info:
+  author: Peter Bonrad
+  description: Ansible role to install Mosquitto
+  license: MIT
+  min_ansible_version: 2.0
+  github_branch: master
+
+  platforms:
+  - name: Debian
+    versions:
+    - jessie
+    - wheezy
+  - name: Ubuntu
+    versions:
+    - wily
+    - xenial
+
+  galaxy_tags:
+  - mqtt
+  - messaging
+
+dependencies: []

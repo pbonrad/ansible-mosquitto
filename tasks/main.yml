@@ -1,0 +1,44 @@
+---
+# tasks file for mosquitto
+- name: Install any necessary dependencies
+  apt:
+    name: "apt-transport-https"
+    state: present
+  become: true
+  when: ansible_distribution == "Debian"
+
+- name: Add Mosquitto apt key
+  apt_key:
+    url: "http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key"
+    id: 30993623
+    state: present
+  become: true
+  when: ansible_distribution == "Debian"
+
+- name: Add Mosquitto apt repository
+  apt_repository:
+    repo: "deb http://repo.mosquitto.org/debian {{ ansible_distribution_release | lower }} main"
+    update_cache: yes
+    state: present
+  become: true
+  when: ansible_distribution == "Debian"
+
+- name: Install Mosquitto
+  apt:
+    name: mosquitto
+    state: present
+  become: true
+
+- name: Configure Mosquitto
+  template:
+    src: mosquitto.conf.j2
+    dest: /etc/mosquitto/mosquitto.conf
+  become: true
+  notify: Restart Mosquitto
+
+- name: Start Mosquitto as service and enable to start on boot
+  service:
+    name: mosquitto
+    state: started
+    enabled: yes
+  become: true

@@ -1,0 +1,7 @@
+---
+# handlers file for mosquitto
+- name: Restart Mosquitto
+  service:
+    name: mosquitto
+    state: restarted
+  become: true

@@ -1,0 +1,10 @@
+---
+# defaults file for mosquitto
+mosquitto_pid_file: "/var/run/mosquitto.pid"
+mosquitto_default_port: 1883
+mosquitto_extra_listener: 9001
+mosquitto_extra_protocol: "websockets"
+
+mosquitto_persistence: "true"
+mosquitto_persistence_location: "/var/lib/mosquitto/"
+mosquitto_log_dest_file: "/var/log/mosquitto/mosquitto.log"
