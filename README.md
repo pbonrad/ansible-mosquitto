@@ -1,38 +1,43 @@
-Role Name
-=========
+# ansible-mosquitto [![Build Status](https://travis-ci.org/pbonrad/ansible-mosquitto.svg?branch=master)](https://travis-ci.org/pbonrad/ansible-mosquitto)
 
-A brief description of the role goes here.
+Mosquitto™ is an open source (EPL/EDL licensed) message broker that implements the MQTT protocol versions 3.1 and 3.1.1. MQTT provides a lightweight method of carrying out messaging using a publish/subscribe model. This makes it suitable for "Internet of Things" messaging such as with low power sensors or mobile devices such as phones, embedded computers or microcontrollers like the Arduino.
 
-Requirements
-------------
+More information about Mosquitto can be found here:
+[https://mosquitto.org/](https://mosquitto.org/)
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role installs Mosquitto on the target server using the `apt-get` package manager. It works for Ubuntu and Debian servers and was tested with the help of docker containers. In comparison to other Ansible role tests where Ansible runs inside the container and is connecting to localhost, I decided to use the [Ansible docker connection](http://docs.ansible.com/ansible/intro_inventory.html#non-ssh-connection-types) (`ansible_connection=docker`). The build which run at [Travis CI](https://travis-ci.org/pbonrad/ansible-mosquitto) uses this functionality.
 
-Role Variables
---------------
+See also:
+* GitHub project with Dockerfiles:  [https://github.com/pbonrad/ansible-docker-base](https://github.com/pbonrad/ansible-docker-base)
+* Role on Ansible Galaxy:  [https://galaxy.ansible.com/pbonrad/mosquitto/](https://galaxy.ansible.com/pbonrad/mosquitto/)
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+## Role Variables
 
-Dependencies
-------------
+A complete configuration file (which is quite long) can be found on the GitHub project:
+[https://github.com/eclipse/mosquitto/blob/master/mosquitto.conf](https://github.com/eclipse/mosquitto/blob/master/mosquitto.conf)
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Actually I decided to use only a very limited number of basic configuration options to use in this role. The chosen entries are exact the same as are set while a default installation. I will extend it as soon as I or someone else needs more options.
 
-Example Playbook
-----------------
+## Dependencies
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+There are no dependencies to other roles. If you want to run the test, you need to install [Docker](https://www.docker.com/).
 
-    - hosts: servers
+## Example Playbook
+
+An example playbook is included in the `test.yml` file. You can use `run.sh` for running a test locally, which starts a docker container as the target.
+
+    - hosts: all
       roles:
-         - { role: username.rolename, x: 42 }
+         - role: ansible-mosquitto
 
-License
--------
+## Contributions and Feedback
 
-BSD
+Any contributions are welcome. For any bugs or feature requests, please open an issue through [Github](https://github.com/pbonrad/ansible-mosquitto/issues).
 
-Author Information
-------------------
+## License
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT
+
+## Author Information
+
+Peter Bonrad - [pbonrad](https://github.com/pbonrad) - 2016

@@ -19,5 +19,6 @@ galaxy_info:
   galaxy_tags:
   - mqtt
   - messaging
+  - broker
 
 dependencies: []

@@ -1,12 +1,5 @@
 ---
 # tasks file for mosquitto
-- name: Install any necessary dependencies
-  apt:
-    name: "apt-transport-https"
-    state: present
-  become: true
-  when: ansible_distribution == "Debian"
-
 - name: Add Mosquitto apt key
   apt_key:
     url: "http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key"
